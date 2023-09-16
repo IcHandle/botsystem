@@ -1,32 +1,32 @@
-import asyncio
 import discord
 from discord.ext import commands
-
 from core import checks
 from core.models import PermissionLevel
+import asyncio
 
 
-class botPrivacy(commands.Cog):
+class Reports(commands.Cog):
     """
-    The privacy policy of Vinns Support
+    Easy report system right here!
     """
 
     def __init__(self, bot):
         self.bot = bot
+        self.coll = bot.plugin_db.get_partition(self)
 
-    @commands.command(aliases=["myprivacy"])
+    @commands.command()
     @checks.has_permissions(PermissionLevel.REGULAR)
-    async def privacy(self, ctx):
-        """Send the Privacy Policy of Vinns Support"""
-        embed = discord.Embed(
-            title="Vinns Support Privacy Policy"
-        )
-        embed.set_author(name=str(ctx.author), icon_url=str(ctx.author.avatar_url))
-        embed.description = """
-                You can view the Vinns Support Privacy Policy [here.](https://vhr.dis.tf/privacy-policy)
-            """
-        embed.color = self.bot.main_color
-        return await ctx.send(embed=embed)
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def report(self, ctx):
+        """
+        Report a player.
+        """
+        try:
+       
+     message.channel.send("<a:check:742680789262663710> | Shift announcement has been edited and the shift has ended!")
+        except discord.ext.commands.CommandOnCooldown:
+            print("cooldown")
 
-def setup(bot):
-    bot.add_cog(botPrivacy(bot))
+
+async def setup(bot):
+    await bot.add_cog(Reports(bot))
