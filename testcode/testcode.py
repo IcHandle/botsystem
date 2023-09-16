@@ -8,7 +8,7 @@ from core.models import PermissionLevel
 
 
 class Shift(commands.Cog):
-    """An easy way for HR's to manage shift announcements."""
+    """Announce sessions"""
 
     def __init__(self, bot):
         self.bot = bot
