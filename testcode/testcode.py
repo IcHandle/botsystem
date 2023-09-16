@@ -8,7 +8,7 @@ from core.models import PermissionLevel
 
 class botPrivacy(commands.Cog):
     """
-    Test
+    The privacy policy of Vinns Support
     """
 
     def __init__(self, bot):
@@ -17,13 +17,13 @@ class botPrivacy(commands.Cog):
     @commands.command(aliases=["myprivacy"])
     @checks.has_permissions(PermissionLevel.REGULAR)
     async def privacy(self, ctx):
-        """Test"""
+        """Send the Privacy Policy of Vinns Support"""
         embed = discord.Embed(
-            title="Test"
+            title="Vinns Support Privacy Policy"
         )
         embed.set_author(name=str(ctx.author), icon_url=str(ctx.author.avatar_url))
         embed.description = """
-                test
+                You can view the Vinns Support Privacy Policy [here.](https://vhr.dis.tf/privacy-policy)
             """
         embed.color = self.bot.main_color
         return await ctx.send(embed=embed)
